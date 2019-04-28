@@ -8,8 +8,11 @@
 These are some of the points I'll be getting across -- Will think of better descriptions once this starts to become public
 
 Future goals: 
-1) I'd like to use this with best practices in mind. A Stored Procedure Object should only contain one stored procedure. Each Stored Procedure should abide by "Single Responsibility Principle".
-2) I'd like to be able to parse enumerables into a class automatically without parsing each individual property
-3) I'd like to be able to parse tables into classes with normalized lists automatically without parsing each data set.
-4) I'd like to separate out the IDatabaseConnection WrapQuery functionality from IDatabaseFacade so I can more effectively Unit Test
-5) I'd like to implement a Core Library alongside a Sqlite, MSSQL, MySql, DB2, PostGres, etc database. This is a nano-orm, in the sense that it just wraps the database query or stored proc execution, but doesn't have features like "insert, delete, etc" like npoco has
+1) I'd like to be able to parse enumerables into a class automatically without parsing each individual property
+2) I'd like to be able to parse tables into classes with normalized lists automatically without parsing each data set.
+3) I'd like to rename library to "nanOrm" to represent that it's a nano-orm.
+4) I'd like to create a IViewQueryParameters, that has GetAppendedSql(), as well as GetFilterParameters. 
+4) * IViewQueryParameters should probably have attributes such as the attributes used to assign values to their parsed equivalents
+4) * * i.e. if getTransaction has a return value "Cost", then the TransactionPoco should have a property "Cost" with an attribute parameter mapping: \[Column("Cost")\]. IViewQueryParameters should implement same logic, but on Fetch it will reflect upon the properties that exist on the poco and form the Select Query from them.
+4) * IViewQueryParameters should have View attribute with name of View.
+4) * IViewQueryParameters should have a function "SetAppendedSql(string sql)" or something that then sets Where, Group By, Having, Order by, etc. It looks like if we want to be able to use complicated concepts like Coalesce, then we can't have our cake and eat it too by auto-generating C# code or by somehow parsing out where clauses. In addition, if we have a Column attribute we should probably have a ViewQueryParameter Attribute, with an ignoreIfNull flag, and also should only add if it detects @parameter in the appendedSql
