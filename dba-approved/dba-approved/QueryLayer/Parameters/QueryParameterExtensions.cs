@@ -206,8 +206,8 @@ namespace dba_approved_core.QueryLayer.Parameters
                         }
                         if (!isIgnored)
                         {
-                            if (!string.IsNullOrEmpty(attributeWithData.StoredProcedureParameterAlias))
-                                parameters.Add(attributeWithData.StoredProcedureParameterAlias, value);
+                            if (!string.IsNullOrEmpty(attributeWithData.Alias))
+                                parameters.Add(attributeWithData.Alias, value);
                             else
                                 parameters.Add(member.Name, value);
                         }

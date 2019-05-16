@@ -17,7 +17,7 @@ namespace dba_approved_core.Helpers
                 return (T?)result;
             }
 
-            return default(T?);
+            return default;
         }
         private static bool TryParseFieldNullableT<T>(DataRow row, string columnName, out T? value) where T : struct
         {

@@ -16,24 +16,10 @@ namespace dba_approved_core.QueryLayer.Parameters.StoredProcedures
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method, AllowMultiple = true)]
     public sealed class StoredProcedureParameterAttribute : Attribute
     {
-
         /// <summary>
         /// The alias of this mapping property
         /// </summary>
-        public string StoredProcedureParameterAlias
-        {
-            get => _storedProcedureParameterAlias;
-        }
-
-        private string _storedProcedureParameterAlias;
-        /// <summary>
-        /// Use this short-hand to populate the Alias. Setting this will override the value added into the constructor.
-        /// </summary>
-        public string Alias
-        {
-            get => _storedProcedureParameterAlias;
-            set => _storedProcedureParameterAlias = value;
-        }
+        public string Alias { get;set; }
         /// <summary>
         /// If Property or Method returns a null value, this tag specifies it should not be added to specific stored procedure.
         /// </summary>

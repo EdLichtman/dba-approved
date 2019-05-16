@@ -14,5 +14,7 @@ namespace dba_approved.unit.tests.QueryLayer
             //This test is to test the syntax of creating a database facade and verify if it's clean
             var database = new DatabaseFacade<ITestConnectionStrings>(new TestConnectionStrings(), connectionStrings => new MsSqlDatabase(connectionStrings.TestConnection));
         }
+
+        
     }
 }
